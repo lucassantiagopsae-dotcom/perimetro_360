@@ -55,7 +55,7 @@
     
     /* ── Utilities ── */
     .glass-panel { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.06); }
-    .brand-gradient-text { background: linear-gradient(135deg, var(--b-300), var(--p-300)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; display: inline-block; padding-right: 0.3em; margin-right: -0.3em; padding-bottom: 0.05em; }
+    .brand-gradient-text { background: linear-gradient(135deg, var(--b-300), var(--p-300)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; display: inline !important; padding-right: 2px; margin-right: -2px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
     .brand-gradient-bg { background: linear-gradient(135deg, var(--b-300), var(--p-500)); }
 
     /* ── Background Grid ── */
@@ -83,7 +83,7 @@
     .animate-on-scroll { opacity: 0; }
     .animate-on-scroll.animate { animation: animationIn 1.2s var(--ease-out) forwards; }
 
-    .text-reveal-wrapper { display: inline-block; overflow: hidden; vertical-align: bottom; }
+    .text-reveal-wrapper { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: 0.2em; margin-bottom: -0.2em; }
     .text-reveal-content { display: inline-block; transform: translateY(110%); transition: transform 1.2s var(--ease-out); }
     .reveal-active .text-reveal-content { transform: translateY(0); }
 
@@ -189,7 +189,7 @@
         <span class="text-[10px] uppercase font-mono tracking-[0.3em] text-neutral-400">Tecnologia · Segurança · Gestão</span>
       </div>
 
-      <h1 class="text-5xl md:text-7xl font-bold tracking-tighter mb-10 leading-[0.9] reveal-section">
+      <h1 class="text-5xl md:text-7xl font-bold tracking-tighter mb-10 leading-[1.1] reveal-section">
         <span class="text-reveal-wrapper"><span class="text-reveal-content">Soluções digitais que</span></span><br>
         <div class="text-reveal-wrapper">
           <span class="text-reveal-content brand-gradient-text italic">protegem, organizam e simplificam.</span>
@@ -404,7 +404,7 @@
         <!-- Pablo -->
         <div class="group relative animate-on-scroll">
           <div class="relative rounded-xl overflow-hidden aspect-[3/4] bg-neutral-900 border border-white/5 group-hover:border-p-500/50 transition-all duration-500">
-            <img src="assets/team/pablo.png" alt="Pablo Rizzo" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110">
+            <img src="assets/pablo_1x.webp" alt="Pablo Rizzo" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110">
             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
             <div class="absolute bottom-8 left-8 right-8">
                <h4 class="text-2xl font-extrabold text-white mb-1">Pablo Rizzo</h4>
@@ -429,7 +429,7 @@
         <!-- Tony -->
         <div class="group relative animate-on-scroll [animation-delay:0.1s]">
           <div class="relative rounded-xl overflow-hidden aspect-[3/4] bg-neutral-900 border border-white/5 group-hover:border-p-500/50 transition-all duration-500">
-            <img src="assets/team/tony.png" alt="Tony Nunes" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110">
+            <img src="assets/tony_1x.webp" alt="Tony Nunes" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110">
             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
             <div class="absolute bottom-8 left-8 right-8">
                <h4 class="text-2xl font-extrabold text-white mb-1">Tony Nunes</h4>
@@ -454,7 +454,7 @@
         <!-- Rafael -->
         <div class="group relative animate-on-scroll [animation-delay:0.2s]">
           <div class="relative rounded-xl overflow-hidden aspect-[3/4] bg-neutral-900 border border-white/5 group-hover:border-p-500/50 transition-all duration-500">
-            <img src="assets/team/rafael.png" alt="Rafael Carvalho" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110">
+            <img src="assets/rafael_1x.webp" alt="Rafael Carvalho" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110">
             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
             <div class="absolute bottom-8 left-8 right-8">
                <h4 class="text-2xl font-extrabold text-white mb-1">Rafael Carvalho</h4>
@@ -479,7 +479,7 @@
         <!-- Ronaldo -->
         <div class="group relative animate-on-scroll [animation-delay:0.3s]">
           <div class="relative rounded-xl overflow-hidden aspect-[3/4] bg-neutral-900 border border-white/5 group-hover:border-p-500/50 transition-all duration-500">
-            <img src="assets/team/ronaldo.png" alt="Ronaldo Nunes" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110">
+            <img src="assets/ronaldo_1x.webp" alt="Ronaldo Nunes" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110">
             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
             <div class="absolute bottom-8 left-8 right-8">
                <h4 class="text-2xl font-extrabold text-white mb-1">Ronaldo Nunes</h4>
