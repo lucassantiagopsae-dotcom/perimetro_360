@@ -65,10 +65,11 @@
   <!-- ════════ HERO ════════ -->
   <section class="relative min-h-screen flex flex-col items-center justify-center px-6 pt-32 overflow-hidden" id="hero">
     <div class="absolute inset-0 -z-10 bg-black">
-      <video autoplay loop muted playsinline poster="assets/hero_video_poster.webp"
-        class="w-full h-full object-cover opacity-30" loading="lazy">
-        <source src="assets/hero_video.mp4" type="video/mp4">
-      </video>
+      <img src="assets/hero_background_v2.webp" 
+        srcset="assets/hero_background_v2_1200.webp 1200w, assets/hero_background_v2.webp 1920w"
+        sizes="100vw"
+        alt=""
+        class="w-full h-full object-cover opacity-30">
       <div class="absolute inset-0" style="background: radial-gradient(circle at center, transparent 0%, #000 90%);">
       </div>
     </div>
@@ -178,7 +179,7 @@
             <div class="relative space-y-8">
               <div class="text-8xl font-black text-white/5 font-mono leading-none">ZERO</div>
               <h3 class="text-4xl font-bold">ZERO dependência de hardware.</h3>
-              <p class="text-neutral-400 text-lg font-light leading-relaxed">
+              <p class="text-neutral-400 text-lg font-light leading-relaxed text-justify">
                 Trabalhamos com o seu dispositivo, eliminando custos de infraestrutura física e manutenção técnica
                 complexa.
               </p>
@@ -346,7 +347,7 @@
         <span class="text-[10px] uppercase font-mono tracking-[0.6em] text-p-400 mb-6 block">Liderança</span>
         <h2 class="text-4xl md:text-7xl font-black tracking-tighter mb-10 leading-none">O time por trás <br>da <span
             class="brand-gradient-text italic">visão.</span></h2>
-        <p class="text-neutral-400 text-2xl font-light leading-relaxed">
+        <p class="text-neutral-400 text-2xl font-light leading-relaxed text-justify">
           Décadas de experiência combinada transformando tecnologia em competitividade.
         </p>
       </div>
@@ -355,9 +356,9 @@
         <!-- Pablo -->
         <div class="group relative animate-on-scroll">
           <div
-            class="relative rounded-xl overflow-hidden aspect-[3/4] bg-neutral-900 border border-white/5 group-hover:border-p-500/50 transition-all duration-500">
+            class="relative rounded-xl overflow-hidden aspect-[3/4] bg-neutral-900 border border-white/5 transition-all duration-500">
             <img src="assets/pablo_1x.webp" alt="Pablo Rizzo"
-              class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110">
+              class="w-full h-full object-cover transition-all duration-1000">
             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
             <div class="absolute bottom-8 left-8 right-8">
               <h4 class="text-2xl font-extrabold text-white mb-1">Pablo Rizzo</h4>
@@ -366,7 +367,7 @@
             </div>
           </div>
           <div class="mt-6 flex flex-col gap-2 px-4 transition-all duration-500 bio-container">
-            <div class="bio-text text-sm text-neutral-400 font-light leading-relaxed">
+            <div class="bio-text text-sm text-neutral-400 font-light leading-relaxed text-justify">
               Executivo e jurista com mais de 18 anos de experiência na liderança de organizações multidisciplinares e
               na fundação de empresas de sucesso. Especialista em Direito Civil e Empresarial, com foco em
               responsabilidade civil e contratos de alta complexidade, Pablo construiu uma trajetória sólida atendendo
@@ -379,19 +380,15 @@
             <button class="bio-btn" onclick="toggleBio(this)">
               Ler mais <iconify-icon icon="solar:alt-arrow-down-linear" class="transition-transform"></iconify-icon>
             </button>
-            <div class="flex gap-4 mt-2">
-              <iconify-icon icon="ri:linkedin-fill" class="text-p-400"></iconify-icon>
-              <iconify-icon icon="ri:twitter-x-line" class="text-neutral-600"></iconify-icon>
-            </div>
           </div>
         </div>
 
         <!-- Tony -->
         <div class="group relative animate-on-scroll [animation-delay:0.1s]">
           <div
-            class="relative rounded-xl overflow-hidden aspect-[3/4] bg-neutral-900 border border-white/5 group-hover:border-p-500/50 transition-all duration-500">
+            class="relative rounded-xl overflow-hidden aspect-[3/4] bg-neutral-900 border border-white/5 transition-all duration-500">
             <img src="assets/tony_1x.webp" alt="Tony Nunes"
-              class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110">
+              class="w-full h-full object-cover transition-all duration-1000">
             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
             <div class="absolute bottom-8 left-8 right-8">
               <h4 class="text-2xl font-extrabold text-white mb-1">Tony Nunes</h4>
@@ -400,7 +397,7 @@
             </div>
           </div>
           <div class="mt-6 flex flex-col gap-2 px-4 transition-all duration-500 bio-container">
-            <div class="bio-text text-sm text-neutral-400 font-light leading-relaxed">
+            <div class="bio-text text-sm text-neutral-400 font-light leading-relaxed text-justify">
               Líder estratégico com 25 anos de experiência em infraestrutura de telecomunicações e otimização de
               sistemas de larga escala. Com vasta experiência no gerenciamento de plataformas de alto custo e
               complexidade técnica, Tony possui um olhar apurado para eficiência operacional e maximização do retorno
@@ -413,19 +410,15 @@
             <button class="bio-btn" onclick="toggleBio(this)">
               Ler mais <iconify-icon icon="solar:alt-arrow-down-linear" class="transition-transform"></iconify-icon>
             </button>
-            <div class="flex gap-4 mt-2">
-              <iconify-icon icon="ri:linkedin-fill" class="text-p-400"></iconify-icon>
-              <iconify-icon icon="ri:twitter-x-line" class="text-neutral-600"></iconify-icon>
-            </div>
           </div>
         </div>
 
         <!-- Rafael -->
         <div class="group relative animate-on-scroll [animation-delay:0.2s]">
           <div
-            class="relative rounded-xl overflow-hidden aspect-[3/4] bg-neutral-900 border border-white/5 group-hover:border-p-500/50 transition-all duration-500">
+            class="relative rounded-xl overflow-hidden aspect-[3/4] bg-neutral-900 border border-white/5 transition-all duration-500">
             <img src="assets/rafael_1x.webp" alt="Rafael Carvalho"
-              class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110">
+              class="w-full h-full object-cover transition-all duration-1000">
             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
             <div class="absolute bottom-8 left-8 right-8">
               <h4 class="text-2xl font-extrabold text-white mb-1">Rafael Carvalho</h4>
@@ -434,7 +427,7 @@
             </div>
           </div>
           <div class="mt-6 flex flex-col gap-2 px-4 transition-all duration-500 bio-container">
-            <div class="bio-text text-sm text-neutral-400 font-light leading-relaxed">
+            <div class="bio-text text-sm text-neutral-400 font-light leading-relaxed text-justify">
               Engenheiro de Software com mais de 15 anos de trajetória no desenvolvimento de sistemas críticos e de alta
               complexidade. Com carreira consolidada na criação de soluções escaláveis para os setores de Pagamentos,
               E-commerce e Telecomunicações, Rafael une excelência técnica em arquitetura de microsserviços à visão
@@ -447,19 +440,15 @@
             <button class="bio-btn" onclick="toggleBio(this)">
               Ler mais <iconify-icon icon="solar:alt-arrow-down-linear" class="transition-transform"></iconify-icon>
             </button>
-            <div class="flex gap-4 mt-2">
-              <iconify-icon icon="ri:linkedin-fill" class="text-p-400"></iconify-icon>
-              <iconify-icon icon="ri:github-fill" class="text-neutral-600"></iconify-icon>
-            </div>
           </div>
         </div>
 
         <!-- Ronaldo -->
         <div class="group relative animate-on-scroll [animation-delay:0.3s]">
           <div
-            class="relative rounded-xl overflow-hidden aspect-[3/4] bg-neutral-900 border border-white/5 group-hover:border-p-500/50 transition-all duration-500">
+            class="relative rounded-xl overflow-hidden aspect-[3/4] bg-neutral-900 border border-white/5 transition-all duration-500">
             <img src="assets/ronaldo_1x.webp" alt="Ronaldo Nunes"
-              class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110">
+              class="w-full h-full object-cover transition-all duration-1000">
             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
             <div class="absolute bottom-8 left-8 right-8">
               <h4 class="text-2xl font-extrabold text-white mb-1">Ronaldo Nunes</h4>
@@ -468,7 +457,7 @@
             </div>
           </div>
           <div class="mt-6 flex flex-col gap-2 px-4 transition-all duration-500 bio-container">
-            <div class="bio-text text-sm text-neutral-400 font-light leading-relaxed">
+            <div class="bio-text text-sm text-neutral-400 font-light leading-relaxed text-justify">
               Especialista em segurança estratégica e gestão de riscos com sólida formação acadêmica e militar. Com
               especialização em Master Business Security pela FGV e graduação em Ciências Militares, Ronaldo traz uma
               visão técnica de alto nível para o gerenciamento de projetos complexos de segurança. Sua atuação foca na
@@ -481,10 +470,6 @@
             <button class="bio-btn" onclick="toggleBio(this)">
               Ler mais <iconify-icon icon="solar:alt-arrow-down-linear" class="transition-transform"></iconify-icon>
             </button>
-            <div class="flex gap-4 mt-2">
-              <iconify-icon icon="ri:linkedin-fill" class="text-p-400"></iconify-icon>
-              <iconify-icon icon="ri:shield-star-fill" class="text-neutral-600"></iconify-icon>
-            </div>
           </div>
         </div>
       </div>
@@ -551,11 +536,6 @@
             <h5 class="text-xs font-mono uppercase tracking-widest text-white">Avisos Legais</h5>
             <a href="#" class="text-sm text-neutral-400 hover:text-p-400 transition-colors">Termos</a>
             <a href="#" class="text-sm text-neutral-400 hover:text-p-400 transition-colors">Privacidade</a>
-          </div>
-          <div class="flex flex-col gap-6">
-            <h5 class="text-xs font-mono uppercase tracking-widest text-white">Redes Sociais</h5>
-            <a href="#" class="text-sm text-neutral-400 hover:text-p-400 transition-colors">LinkedIn</a>
-            <a href="#" class="text-sm text-neutral-400 hover:text-p-400 transition-colors">Instagram</a>
           </div>
         </div>
       </div>
