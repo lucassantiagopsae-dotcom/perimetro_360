@@ -9,6 +9,41 @@
 
   <!-- Compiled Tailwind CSS -->
   <link rel="stylesheet" href="assets/css/style.min.css">
+  <style id="elementor-migration-styles">
+    /* Explicit Keyframes for Cloning Tools */
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes animationIn {
+      0% { opacity: 0; filter: blur(12px); transform: translateY(40px); }
+      100% { opacity: 1; filter: blur(0); transform: translateY(0); }
+    }
+    /* Critical UI Components - Force Visibility for Cloners */
+    .btn-beam { position: relative; overflow: hidden; display: inline-flex !important; border-radius: 0.375rem; }
+    .beam-core {
+      position: absolute;
+      inset: -1000%;
+      background: conic-gradient(from 0deg, transparent 0 340deg, #ce93d8 360deg);
+      animation: spin 2s linear infinite;
+    }
+    .glass-panel {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .brand-gradient-text {
+      background: linear-gradient(135deg, #2196f3, #ce93d8);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+    .animate-on-scroll { opacity: 0; }
+    .animate-on-scroll.animate { animation: animationIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    
+    /* Hover/State Fixes */
+    .bio-btn { outline: none !important; border: none !important; box-shadow: none !important; }
+    .bio-btn:focus { outline: none !important; border: none !important; }
+  </style>
 
   <!-- Iconify -->
   <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js" defer></script>
