@@ -1,322 +1,23 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Perímetro 360 | Tecnologia · Segurança · Gestão</title>
+  <meta name="description" content="A Perímetro 360 oferece soluções SaaS inovadoras para gestão e segurança, eliminando hardware complexo e garantindo controle total na palma da sua mão.">
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Compiled Tailwind CSS -->
+  <link rel="stylesheet" href="assets/css/style.min.css">
 
   <!-- Iconify -->
-  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js" defer></script>
 
   <!-- Google Fonts: Inter & JetBrains Mono -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
-    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace'],
-          },
-          colors: {
-            p: {
-              100: '#F3E5F5', 200: '#E1BEE7', 300: '#CE93D8', 400: '#BA68C8',
-              500: '#7F00B2', 600: '#8E24AA', 700: '#7B1FA2', 800: '#6A1B9A', 900: '#4A148C'
-            },
-            b: {
-              100: '#E3F2FD', 200: '#BBDEFB', 300: '#2196F3', 400: '#42A5F5', 500: '#2196F3'
-            }
-          },
-          animation: {
-            'shimmer-slow': 'shimmer 4s linear infinite',
-            'orb-drift': 'orb-drift 15s ease-in-out infinite',
-            'float': 'float 6s ease-in-out infinite',
-            'beam': 'spin 3s linear infinite',
-          }
-        }
-      }
-    }
-  </script>
-
-  <style>
-    :root {
-      --p-500: #7F00B2;
-      --p-300: #CE93D8;
-      --p-400: #BA68C8;
-      --b-300: #2196F3;
-      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    body {
-      background-color: #000;
-      color: #fff;
-      scroll-behavior: smooth;
-    }
-
-    /* ── Utilities ── */
-    .glass-panel {
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .brand-gradient-text {
-      background: linear-gradient(135deg, var(--b-300), var(--p-300));
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      display: inline !important;
-      padding-right: 0.15em;
-      margin-right: -0.15em;
-      -webkit-box-decoration-break: clone;
-      box-decoration-break: clone;
-    }
-
-    .brand-gradient-bg {
-      background: linear-gradient(135deg, var(--b-300), var(--p-500));
-    }
-
-    /* ── Background Grid ── */
-    .bg-grid {
-      background-image: radial-gradient(rgba(127, 0, 178, 0.08) 1px, transparent 1px);
-      background-size: 50px 50px;
-    }
-
-    /* ── Orbs ── */
-    .orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(80px);
-      pointer-events: none;
-      mix-blend-mode: screen;
-      opacity: 0.3;
-    }
-
-    @keyframes orb-drift {
-
-      0%,
-      100% {
-        transform: translate(0, 0) scale(1);
-      }
-
-      33% {
-        transform: translate(50px, -40px) scale(1.15);
-      }
-
-      66% {
-        transform: translate(-40px, 60px) scale(0.85);
-      }
-    }
-
-    /* ── Flashlight Card ── */
-    .flashlight-card {
-      position: relative;
-      overflow: hidden;
-      border-radius: 0.5rem;
-      background: #0A0A0A;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .flashlight-effect {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0;
-      transition: opacity 0.3s;
-      background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(127, 0, 178, 0.1), transparent 45%);
-    }
-
-    .flashlight-border {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0;
-      transition: opacity 0.3s;
-      border: 1px solid rgba(127, 0, 178, 0.3);
-      border-radius: inherit;
-      -webkit-mask: radial-gradient(150px circle at var(--mouse-x) var(--mouse-y), black, transparent);
-      mask: radial-gradient(150px circle at var(--mouse-x) var(--mouse-y), black, transparent);
-    }
-
-    .flashlight-card:hover .flashlight-effect,
-    .flashlight-card:hover .flashlight-border {
-      opacity: 1;
-    }
-
-    /* ── Animations ── */
-    @keyframes animationIn {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-        filter: blur(12px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-        filter: blur(0);
-      }
-    }
-
-    .animate-on-scroll {
-      opacity: 0;
-    }
-
-    .animate-on-scroll.animate {
-      animation: animationIn 1.2s var(--ease-out) forwards;
-    }
-
-    .text-reveal-wrapper {
-      display: inline-block;
-      overflow: hidden;
-      vertical-align: bottom;
-      padding-bottom: 0.2em;
-      margin-bottom: -0.2em;
-    }
-
-    .text-reveal-content {
-      display: inline-block;
-      transform: translateY(110%);
-      transition: transform 1.2s var(--ease-out);
-    }
-
-    .reveal-active .text-reveal-content {
-      transform: translateY(0);
-    }
-
-    @keyframes spin {
-      from {
-        transform: rotate(0deg);
-      }
-
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    @keyframes shimmer {
-      from {
-        transform: skew(-15deg) translateX(-100%);
-      }
-
-      to {
-        transform: skew(-15deg) translateX(250%);
-      }
-    }
-
-    @keyframes float {
-
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-30px);
-      }
-    }
-
-    /* ── Custom Scrollbar ── */
-    ::-webkit-scrollbar {
-      width: 10px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: #000;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: #1a1a1a;
-      border-radius: 0.5rem;
-      border: 2px solid #000;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: var(--p-500);
-    }
-
-    /* ── Button Beam Effect ── */
-    .btn-beam {
-      position: relative;
-      border-radius: 0.375rem;
-      padding: 1px;
-      display: inline-flex;
-      cursor: pointer;
-      overflow: hidden;
-      isolation: isolate;
-    }
-
-    .beam-core {
-      position: absolute;
-      inset: -1000%;
-      background: conic-gradient(from 0deg, transparent 0 340deg, var(--p-300) 360deg);
-      animation: spin 2s linear infinite;
-    }
-
-    .btn-inner {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 0.375rem;
-      background: #000;
-      padding: 0.875rem 2.5rem;
-      transition: background 0.3s;
-      width: 100%;
-      height: 100%;
-    }
-
-    .btn-beam:hover .btn-inner {
-      background: #0a0510;
-    }
-
-    /* ── Image Overlay ── */
-    .img-mask {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, #000, transparent 40%);
-    }
-
-    /* ── Bio Expansion ── */
-    .bio-text {
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      transition: all 0.5s var(--ease-out);
-    }
-
-    .bio-text.expanded {
-      -webkit-line-clamp: unset;
-      line-clamp: unset;
-      display: block;
-    }
-
-    .bio-btn {
-      color: var(--p-400);
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-top: 0.5rem;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.25rem;
-    }
-
-    .bio-btn:hover {
-      color: var(--p-300);
-    }
-  </style>
 </head>
 
 <body class="antialiased selection:bg-p-500/30">
@@ -364,8 +65,8 @@
   <!-- ════════ HERO ════════ -->
   <section class="relative min-h-screen flex flex-col items-center justify-center px-6 pt-32 overflow-hidden" id="hero">
     <div class="absolute inset-0 -z-10 bg-black">
-      <video autoplay loop muted playsinline poster="assets/hero_video_poster.jpg"
-        class="w-full h-full object-cover opacity-30">
+      <video autoplay loop muted playsinline poster="assets/hero_video_poster.webp"
+        class="w-full h-full object-cover opacity-30" loading="lazy">
         <source src="assets/hero_video.mp4" type="video/mp4">
       </video>
       <div class="absolute inset-0" style="background: radial-gradient(circle at center, transparent 0%, #000 90%);">
@@ -457,11 +158,11 @@
             </div>
             <div class="relative">
               <h4 class="text-white font-bold text-2xl mb-2">Perímetro</h4>
-              <p class="text-xs text-neutral-500 font-mono tracking-widest uppercase">Mapeamento & Proteção</p>
+              <p class="text-xs text-neutral-400 font-mono tracking-widest uppercase">Mapeamento & Proteção</p>
             </div>
             <div class="relative">
               <h4 class="text-white font-bold text-2xl mb-2">360</h4>
-              <p class="text-xs text-neutral-500 font-mono tracking-widest uppercase">Cobertura Completa</p>
+              <p class="text-xs text-neutral-400 font-mono tracking-widest uppercase">Cobertura Completa</p>
             </div>
           </div>
         </div>
@@ -477,7 +178,7 @@
             <div class="relative space-y-8">
               <div class="text-8xl font-black text-white/5 font-mono leading-none">ZERO</div>
               <h3 class="text-4xl font-bold">ZERO dependência de hardware.</h3>
-              <p class="text-neutral-500 text-lg font-light leading-relaxed">
+              <p class="text-neutral-400 text-lg font-light leading-relaxed">
                 Trabalhamos com o seu dispositivo, eliminando custos de infraestrutura física e manutenção técnica
                 complexa.
               </p>
@@ -534,7 +235,7 @@
                   <span class="w-1 h-1 rounded-full bg-emerald-400"></span>
                   SISTEMA ATIVO
                 </span>
-                <h4 class="text-3xl font-black brand-gradient-text">Ronda 360</h4>
+                <h3 class="text-3xl font-black brand-gradient-text">Ronda 360</h3>
               </div>
             </div>
 
@@ -546,8 +247,11 @@
 
             <div
               class="relative rounded-xl overflow-hidden glass-panel border-white/10 mb-12 group-hover:border-p-500/40 transition-all duration-500 shadow-inner">
-              <img src="assets/ronda360_mockup.png" alt="Ronda 360"
-                class="w-full h-auto scale-100 group-hover:scale-110 transition-transform duration-1000 opacity-80">
+              <img src="assets/ronda360_mockup.webp" 
+                srcset="assets/ronda360_mockup_600.webp 600w, assets/ronda360_mockup.webp 1200w"
+                sizes="(max-width: 600px) 100vw, 1200px"
+                alt="Ronda 360"
+                class="w-full h-auto scale-100 group-hover:scale-110 transition-transform duration-1000 opacity-80" loading="lazy">
               <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
             </div>
 
@@ -589,11 +293,11 @@
               <div
                 class="w-16 h-16 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-white/10 transition-all duration-500">
                 <iconify-icon icon="solar:layers-bold-duotone"
-                  class="text-neutral-500 group-hover:text-neutral-400 text-3xl transition-colors"></iconify-icon>
+                  class="text-neutral-400 group-hover:text-neutral-400 text-3xl transition-colors"></iconify-icon>
               </div>
               <div class="flex flex-col items-end opacity-60 group-hover:opacity-100 transition-opacity">
                 <span class="text-[9px] font-mono tracking-widest text-neutral-400 mb-2 font-medium">EM DESENVOLVIMENTO</span>
-                <h4 class="text-xl font-bold text-neutral-300 group-hover:text-white transition-colors">Gestão 360</h4>
+                <h3 class="text-xl font-bold text-neutral-300 group-hover:text-white transition-colors">Gestão 360</h3>
               </div>
             </div>
 
@@ -604,8 +308,11 @@
 
             <div
               class="relative rounded-xl overflow-hidden glass-panel border-white/5 mb-12 opacity-40 group-hover:opacity-70 transition-all duration-500 grayscale">
-              <img src="assets/platform_mockup.png" alt="Plataforma de Gestão"
-                class="w-full h-auto scale-100 group-hover:scale-105 transition-transform duration-1000">
+              <img src="assets/platform_mockup.webp" 
+                srcset="assets/platform_mockup_600.webp 600w, assets/platform_mockup.webp 1200w"
+                sizes="(max-width: 600px) 100vw, 1200px"
+                alt="Plataforma de Gestão"
+                class="w-full h-auto scale-100 group-hover:scale-105 transition-transform duration-1000" loading="lazy">
               <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
             </div>
 
@@ -639,7 +346,7 @@
         <span class="text-[10px] uppercase font-mono tracking-[0.6em] text-p-400 mb-6 block">Liderança</span>
         <h2 class="text-4xl md:text-7xl font-black tracking-tighter mb-10 leading-none">O time por trás <br>da <span
             class="brand-gradient-text italic">visão.</span></h2>
-        <p class="text-neutral-500 text-2xl font-light leading-relaxed">
+        <p class="text-neutral-400 text-2xl font-light leading-relaxed">
           Décadas de experiência combinada transformando tecnologia em competitividade.
         </p>
       </div>
@@ -796,7 +503,7 @@
         <span class="text-[10px] uppercase font-mono tracking-[0.8em] text-p-400 mb-10 block">Conexão</span>
         <h2 class="text-4xl md:text-6xl font-black tracking-tighter mb-12 uppercase leading-none">Pronto para a
           <br><span class="brand-gradient-text italic">transformação?</span></h2>
-        <p class="text-neutral-500 text-2xl font-light mb-16 leading-relaxed max-w-2xl mx-auto">
+        <p class="text-neutral-400 text-2xl font-light mb-16 leading-relaxed max-w-2xl mx-auto">
           Entre em contato conosco e descubra como o ecossistema Perímetro 360 pode blindar sua operação.
         </p>
 
@@ -828,7 +535,7 @@
           <div class="flex items-center gap-3 mb-10">
             <img src="assets/logo.webp" alt="Perímetro 360" class="h-10 w-auto">
           </div>
-          <p class="text-neutral-500 text-lg font-light leading-relaxed">
+          <p class="text-neutral-400 text-lg font-light leading-relaxed">
             Desenvolvendo as cercas digitais do amanhã. Segurança, gestão e controle sem fricção.
           </p>
         </div>
@@ -836,19 +543,19 @@
         <div class="grid grid-cols-2 sm:grid-cols-3 gap-20">
           <div class="flex flex-col gap-6">
             <h5 class="text-xs font-mono uppercase tracking-widest text-white">Navegação</h5>
-            <a href="#hero" class="text-sm text-neutral-500 hover:text-p-400 transition-colors">Hero</a>
-            <a href="#quem-somos" class="text-sm text-neutral-500 hover:text-p-400 transition-colors">Sobre</a>
-            <a href="#produtos" class="text-sm text-neutral-500 hover:text-p-400 transition-colors">SaaS</a>
+            <a href="#hero" class="text-sm text-neutral-400 hover:text-p-400 transition-colors">Hero</a>
+            <a href="#quem-somos" class="text-sm text-neutral-400 hover:text-p-400 transition-colors">Sobre</a>
+            <a href="#produtos" class="text-sm text-neutral-400 hover:text-p-400 transition-colors">SaaS</a>
           </div>
           <div class="flex flex-col gap-6">
             <h5 class="text-xs font-mono uppercase tracking-widest text-white">Avisos Legais</h5>
-            <a href="#" class="text-sm text-neutral-500 hover:text-p-400 transition-colors">Termos</a>
-            <a href="#" class="text-sm text-neutral-500 hover:text-p-400 transition-colors">Privacidade</a>
+            <a href="#" class="text-sm text-neutral-400 hover:text-p-400 transition-colors">Termos</a>
+            <a href="#" class="text-sm text-neutral-400 hover:text-p-400 transition-colors">Privacidade</a>
           </div>
           <div class="flex flex-col gap-6">
             <h5 class="text-xs font-mono uppercase tracking-widest text-white">Redes Sociais</h5>
-            <a href="#" class="text-sm text-neutral-500 hover:text-p-400 transition-colors">LinkedIn</a>
-            <a href="#" class="text-sm text-neutral-500 hover:text-p-400 transition-colors">Instagram</a>
+            <a href="#" class="text-sm text-neutral-400 hover:text-p-400 transition-colors">LinkedIn</a>
+            <a href="#" class="text-sm text-neutral-400 hover:text-p-400 transition-colors">Instagram</a>
           </div>
         </div>
       </div>

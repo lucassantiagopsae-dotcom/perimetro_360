@@ -1,0 +1,259 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  --color-p-100: #f3e5f5;
+  --color-p-200: #e1bee7;
+  --color-p-300: #ce93d8;
+  --color-p-400: #ba68c8;
+  --color-p-500: #7f00b2;
+  --color-p-600: #8e24aa;
+  --color-p-700: #7b1fa2;
+  --color-p-800: #6a1b9a;
+  --color-p-900: #4a148c;
+
+  --color-b-100: #e3f2fd;
+  --color-b-200: #bbdefb;
+  --color-b-300: #2196f3;
+  --color-b-400: #42a5f5;
+  --color-b-500: #2196f3;
+
+  --animate-shimmer-slow: shimmer 4s linear infinite;
+  --animate-orb-drift: orb-drift 15s ease-in-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-beam: spin 3s linear infinite;
+
+  @keyframes shimmer {
+    from { transform: skew(-15deg) translateX(-100%); }
+    to { transform: skew(-15deg) translateX(250%); }
+  }
+
+  @keyframes orb-drift {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(50px, -40px) scale(1.15); }
+    66% { transform: translate(-40px, 60px) scale(0.85); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-30px); }
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+}
+
+@layer base {
+  :root {
+    --p-500: #7f00b2;
+    --p-300: #ce93d8;
+    --p-400: #ba68c8;
+    --b-300: #2196f3;
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  body {
+    background-color: #000;
+    color: #fff;
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .brand-gradient-text {
+    background: linear-gradient(135deg, var(--b-300), var(--p-300));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline !important;
+    padding-right: 0.15em;
+    margin-right: -0.15em;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+
+  .brand-gradient-bg {
+    background: linear-gradient(135deg, var(--b-300), var(--p-500));
+  }
+
+  .bg-grid {
+    background-image: radial-gradient(rgba(127, 0, 178, 0.08) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    mix-blend-mode: screen;
+    opacity: 0.3;
+  }
+
+  .flashlight-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    background: #0a0a0a;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .flashlight-effect {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+    background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(127, 0, 178, 0.1), transparent 45%);
+  }
+
+  .flashlight-border {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+    border: 1px solid rgba(127, 0, 178, 0.3);
+    border-radius: inherit;
+    -webkit-mask: radial-gradient(150px circle at var(--mouse-x) var(--mouse-y), black, transparent);
+    mask: radial-gradient(150px circle at var(--mouse-x) var(--mouse-y), black, transparent);
+  }
+
+  .flashlight-card:hover .flashlight-effect,
+  .flashlight-card:hover .flashlight-border {
+    opacity: 1;
+  }
+
+  @keyframes animationIn {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+      filter: blur(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+
+  .animate-on-scroll {
+    opacity: 0;
+  }
+
+  .animate-on-scroll.animate {
+    animation: animationIn 1.2s var(--ease-out) forwards;
+  }
+
+  .text-reveal-wrapper {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+    padding-bottom: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .text-reveal-content {
+    display: inline-block;
+    transform: translateY(110%);
+    transition: transform 1.2s var(--ease-out);
+  }
+
+  .reveal-active .text-reveal-content {
+    transform: translateY(0);
+  }
+
+  .btn-beam {
+    position: relative;
+    border-radius: 0.375rem;
+    padding: 1px;
+    display: inline-flex;
+    cursor: pointer;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .beam-core {
+    position: absolute;
+    inset: -1000%;
+    background: conic-gradient(from 0deg, transparent 0 340deg, var(--p-300) 360deg);
+    animation: spin 2s linear infinite;
+  }
+
+  .btn-inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.375rem;
+    background: #000;
+    padding: 0.875rem 2.5rem;
+    transition: background 0.3s;
+    width: 100%;
+    height: 100%;
+  }
+
+  .btn-beam:hover .btn-inner {
+    background: #0a0510;
+  }
+
+  .img-mask {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, #000, transparent 40%);
+  }
+
+  .bio-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: all 0.5s var(--ease-out);
+  }
+
+  .bio-text.expanded {
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+    display: block;
+  }
+
+  .bio-btn {
+    color: var(--color-p-400);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 0.5rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .bio-btn:hover {
+    color: var(--color-p-300);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #000; }
+::-webkit-scrollbar-thumb {
+  background: #1a1a1a;
+  border-radius: 0.5rem;
+  border: 2px solid #000;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--p-500);
+}
